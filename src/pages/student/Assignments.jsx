@@ -34,7 +34,7 @@ const Assignments = () => {
     subjects.find((sub) => sub.name === selectedSubject) || subjects[0];
 
   return (
-    <div className="bg-[var(--card)] p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+    <div className="bg-white text-black dark:text-white p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 dark:bg-gray-900">
       <h2 className="text-xl font-semibold mb-6">
         Assignment Submission Status
       </h2>
@@ -48,7 +48,7 @@ const Assignments = () => {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               selectedSubject === sub.name
                 ? "bg-green-600 text-white shadow-md"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                : "bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
             }`}
           >
             {sub.name}

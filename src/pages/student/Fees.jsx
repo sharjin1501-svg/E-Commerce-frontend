@@ -52,9 +52,15 @@ const Fees = () => {
   return (
     <div className="space-y-8">
 
-      <h1 className="text-2xl font-bold">
-        Fee & Payment Details
-      </h1>
+      {/* Page Title */}
+      <div>
+        <h1 className="text-2xl font-bold text-black dark:text-white">
+          Fee & Payment Details
+        </h1>
+        <p className="text-sm text-[var(--muted)] mt-1">
+          View semester-wise fee payments and pending balances
+        </p>
+      </div>
 
       {/* Semester Filter */}
       <div className="flex flex-wrap gap-3">
@@ -65,7 +71,7 @@ const Fees = () => {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               selectedSemester === sem.semester
                 ? "bg-blue-600 text-white shadow-md"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
             }`}
           >
             {sem.semester}
@@ -75,17 +81,18 @@ const Fees = () => {
 
       {/* Summary Cards */}
       <div className="grid sm:grid-cols-3 gap-6">
-        <div className="p-6 rounded-2xl bg-[var(--card)] border border-gray-200 dark:border-gray-700 shadow-sm">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+
+        <div className="p-6 rounded-2xl bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-sm">
+          <p className="text-sm text-black dark:text-white">
             Total Fees
           </p>
-          <h2 className="text-xl font-semibold mt-2">
+          <h2 className="text-xl font-semibold mt-2 text-black dark:text-white">
             ₹ {totals.total.toLocaleString()}
           </h2>
         </div>
 
-        <div className="p-6 rounded-2xl bg-[var(--card)] border border-gray-200 dark:border-gray-700 shadow-sm">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="p-6 rounded-2xl bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-sm">
+          <p className="text-sm text-black dark:text-white">
             Paid Amount
           </p>
           <h2 className="text-xl font-semibold text-green-600 mt-2">
@@ -93,36 +100,44 @@ const Fees = () => {
           </h2>
         </div>
 
-        <div className="p-6 rounded-2xl bg-[var(--card)] border border-gray-200 dark:border-gray-700 shadow-sm">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="p-6 rounded-2xl bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-sm">
+          <p className="text-sm text-black dark:text-white">
             Pending Amount
           </p>
           <h2 className="text-xl font-semibold text-red-600 mt-2">
             ₹ {totals.unpaid.toLocaleString()}
           </h2>
         </div>
+
       </div>
 
       {/* Fee Table */}
-      <div className="overflow-x-auto bg-[var(--card)] rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+      <div className="overflow-x-auto bg-white rounded-2xl border border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow-sm">
+
         <table className="w-full text-left border-collapse">
+
           <thead>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
+            <tr className="border-b border-gray-200 dark:border-gray-700 text-black dark:text-white text-sm">
               <th className="p-4">Fee Type</th>
               <th className="p-4">Amount</th>
               <th className="p-4">Status</th>
             </tr>
           </thead>
+
           <tbody>
             {currentSemester.fees.map((fee, index) => (
               <tr
                 key={index}
-                className="border-b border-gray-200 dark:border-gray-700"
+                className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
               >
-                <td className="p-4">{fee.title}</td>
-                <td className="p-4">
+                <td className="p-4 text-black dark:text-white">
+                  {fee.title}
+                </td>
+
+                <td className="p-4 text-black dark:text-white">
                   ₹ {fee.amount.toLocaleString()}
                 </td>
+
                 <td className="p-4">
                   <span
                     className={`px-3 py-1 text-xs rounded-full ${
@@ -137,7 +152,9 @@ const Fees = () => {
               </tr>
             ))}
           </tbody>
+
         </table>
+
       </div>
 
     </div>

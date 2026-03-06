@@ -1,18 +1,7 @@
 import { useMemo } from "react";
 
 const Timetable = () => {
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  const periods = ["P1", "P2", "P3", "P4", "P5", "P6", "P7"];
-
-  const timetableData = {
+  const timetable = {
     Monday: [
       "Data Structures",
       "Operating Systems",
@@ -20,7 +9,7 @@ const Timetable = () => {
       "Break",
       "Database Management",
       "Library",
-      "Project Lab"
+      "Project Lab",
     ],
     Tuesday: [
       "Mathematics",
@@ -29,7 +18,7 @@ const Timetable = () => {
       "Operating Systems",
       "Sports",
       "Database Management",
-      "Seminar"
+      "Seminar",
     ],
     Wednesday: [
       "Database Management",
@@ -38,7 +27,7 @@ const Timetable = () => {
       "Data Structures",
       "Project Lab",
       "Operating Systems",
-      "Library"
+      "Library",
     ],
     Thursday: [
       "Operating Systems",
@@ -47,7 +36,7 @@ const Timetable = () => {
       "Mathematics",
       "Seminar",
       "Data Structures",
-      "Mentoring"
+      "Mentoring",
     ],
     Friday: [
       "Project Lab",
@@ -56,7 +45,7 @@ const Timetable = () => {
       "Operating Systems",
       "Mentoring",
       "Mathematics",
-      "Library"
+      "Library",
     ],
     Saturday: [
       "Mathematics",
@@ -65,107 +54,61 @@ const Timetable = () => {
       "Project Discussion",
       "Sports",
       "Library",
-      "Activity Hour"
-    ]
+      "Activity Hour",
+    ],
   };
 
   const today = useMemo(() => {
-    const index = new Date().getDay();
-    return days[index - 1];
+    const days = Object.keys(timetable);
+    const index = new Date().getDay() - 1;
+    return days[index];
   }, []);
 
   return (
     <div className="space-y-8">
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">
-          Weekly Timetable
-        </h1>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        Weekly Timetable
+      </h1>
 
-        {today && (
-          <span className="px-4 py-1 text-sm rounded-full bg-black text-white dark:bg-white dark:text-black">
-            {today}
-          </span>
-        )}
-      </div>
-
-      {/* ===== Desktop View ===== */}
-      <div className="hidden lg:block">
-        <div className="bg-[var(--card)] p-6 rounded-3xl shadow-sm border border-gray-200 dark:border-gray-700">
-
-          {/* Period Header */}
-          <div className="grid grid-cols-8 gap-4 mb-6 text-sm text-gray-400">
-            <div></div>
-            {periods.map((p) => (
-              <div key={p} className="text-center">
-                {p}
-              </div>
-            ))}
-          </div>
-
-          {/* Days */}
-          <div className="space-y-3">
-            {days.map((day) => (
-              <div
-                key={day}
-                className={`grid grid-cols-8 gap-4 items-center p-4 rounded-2xl transition-all ${
-                  today === day
-                    ? "bg-gray-100 dark:bg-gray-800"
-                    : "hover:bg-gray-50 dark:hover:bg-gray-800/60"
-                }`}
-              >
-                {/* Day */}
-                <div className="font-medium text-gray-700 dark:text-gray-200">
-                  {day}
-                </div>
-
-                {/* Subjects */}
-                {timetableData[day].map((subject, index) => (
-                  <div
-                    key={index}
-                    className={`text-xs px-3 py-2 rounded-xl text-center ${
-                      subject === "Break"
-                        ? "text-gray-400 italic"
-                        : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200"
-                    }`}
-                  >
-                    {subject}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ===== Mobile View ===== */}
-      <div className="lg:hidden space-y-6">
-        {days.map((day) => (
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {Object.entries(timetable).map(([day, subjects]) => (
           <div
             key={day}
-            className={`p-5 rounded-2xl bg-[var(--card)] border border-gray-200 dark:border-gray-700 ${
-              today === day ? "ring-1 ring-gray-400" : ""
+            className={`p-6 rounded-2xl border shadow-sm transition
+            ${
+              today === day
+                ? "bg-blue-50 border-blue-400 dark:bg-blue-900/20"
+                : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
             }`}
           >
-            <h2 className="font-semibold mb-4">
-              {day}
-            </h2>
+            {/* Day Header */}
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
+                {day}
+              </h2>
 
-            <div className="grid grid-cols-2 gap-3 text-xs">
-              {periods.map((period, index) => (
-                <div key={period} className="flex flex-col gap-1">
-                  <span className="text-gray-400">
-                    {period}
-                  </span>
-                  <span
-                    className={`px-2 py-1 rounded-lg text-center ${
-                      timetableData[day][index] === "Break"
-                        ? "italic text-gray-400"
-                        : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200"
-                    }`}
-                  >
-                    {timetableData[day][index]}
-                  </span>
+              {today === day && (
+                <span className="text-xs px-3 py-1 rounded-full bg-blue-600 text-white">
+                  Today
+                </span>
+              )}
+            </div>
+
+            {/* Subjects */}
+            <div className="space-y-2">
+              {subjects.map((subject, i) => (
+                <div
+                  key={i}
+                  className={`text-sm px-3 py-2 rounded-lg flex justify-between
+                  ${
+                    subject === "Break"
+                      ? "italic text-gray-400"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200"
+                  }`}
+                >
+                  <span>P{i + 1}</span>
+                  <span>{subject}</span>
                 </div>
               ))}
             </div>

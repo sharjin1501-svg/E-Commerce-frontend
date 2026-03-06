@@ -68,7 +68,7 @@ const Announcements = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="
               pl-10 pr-4 py-2 rounded-lg
-              bg-[var(--card)]
+              bg-white dark:bg-gray-900
               border border-gray-300 dark:border-gray-600
               focus:outline-none focus:ring-2 focus:ring-blue-500
               w-full md:w-64
@@ -86,7 +86,7 @@ const Announcements = () => {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               selectedCategory === cat
                 ? "bg-blue-600 text-white shadow-md"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
             }`}
           >
             {cat}
@@ -102,7 +102,7 @@ const Announcements = () => {
               key={item.id}
               className="
                 p-6 rounded-2xl
-                bg-[var(--card)]
+                bg-white dark:bg-gray-900
                 border border-gray-200 dark:border-gray-700
                 shadow-sm hover:shadow-md transition
                 flex flex-col justify-between

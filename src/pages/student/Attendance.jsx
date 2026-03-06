@@ -19,42 +19,37 @@ const Attendance = () => {
     switch (status) {
       case "Safe":
         return {
-          badge:
-            "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-          bar: "bg-gradient-to-r from-emerald-400 to-emerald-600",
+          badge: "bg-green-100 text-green-600 dark:bg-green-800 dark:text-green-200",
+          bar: "bg-green-500",
         };
       case "Warning":
         return {
-          badge:
-            "bg-amber-500/10 text-amber-400 border border-amber-500/20",
-          bar: "bg-gradient-to-r from-amber-400 to-amber-600",
+          badge: "bg-yellow-100 text-yellow-600 dark:bg-yellow-800 dark:text-yellow-200",
+          bar: "bg-yellow-500",
         };
       default:
         return {
-          badge:
-            "bg-rose-500/10 text-rose-400 border border-rose-500/20",
-          bar: "bg-gradient-to-r from-rose-400 to-rose-600",
+          badge: "bg-red-100 text-red-600 dark:bg-red-800 dark:text-red-200",
+          bar: "bg-red-500",
         };
     }
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gradient-to-br from-gray-100 to-gray-200 
-                    dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 
-                    transition-colors duration-300">
+    <div className="p-6">
       
       {/* Page Title */}
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 tracking-tight">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-black dark:text-gray-200">
           Subject-wise Attendance
         </h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+        <p className="text-sm text-[var(--muted)] mt-2">
           Track your attendance status for each subject
         </p>
       </div>
 
       {/* Cards Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {subjects.map((subject, index) => {
           const percentage = calculatePercentage(
             subject.attended,
@@ -66,28 +61,24 @@ const Attendance = () => {
           return (
             <div
               key={index}
-              className="relative bg-white/70 dark:bg-gray-900/70 
-                         backdrop-blur-xl 
-                         border border-gray-200 dark:border-gray-800 
-                         rounded-2xl p-6 
-                         shadow-md hover:shadow-xl 
-                         transition-all duration-300 
-                         hover:-translate-y-1"
+              className="bg-white dark:bg-gray-900 
+              border border-gray-200 dark:border-gray-700 
+              rounded-2xl p-6 shadow-sm hover:shadow-md transition"
             >
               {/* Subject Name */}
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+              <h3 className="text-lg font-semibold">
                 {subject.name}
               </h3>
 
               {/* Class Info */}
-              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400 space-y-1">
+              <div className="mt-4 text-sm text-[var(--muted)] space-y-1">
                 <p>Total Classes: {subject.total}</p>
                 <p>Attended: {subject.attended}</p>
               </div>
 
               {/* Percentage + Status */}
               <div className="mt-6 flex items-center justify-between">
-                <span className="text-2xl font-bold text-gray-800 dark:text-white">
+                <span className="text-2xl font-bold">
                   {percentage}%
                 </span>
 
@@ -99,9 +90,9 @@ const Attendance = () => {
               </div>
 
               {/* Progress Bar */}
-              <div className="mt-5 w-full h-2.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+              <div className="mt-4 w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                 <div
-                  className={`h-full rounded-full ${styles.bar} transition-all duration-700`}
+                  className={`h-full ${styles.bar} transition-all duration-500`}
                   style={{ width: `${percentage}%` }}
                 />
               </div>

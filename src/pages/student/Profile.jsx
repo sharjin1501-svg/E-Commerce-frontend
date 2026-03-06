@@ -10,30 +10,32 @@ const Profile = () => {
       <SectionCard title="Student Profile">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
 
-          <div className="w-28 h-28 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-3xl font-bold">
+          <div className="w-28 h-28 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-3xl font-bold text-gray-800 dark:text-gray-100">
             JS
           </div>
 
           <div className="text-center md:text-left space-y-2">
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
               John Smith
             </h2>
 
-            <p className="text-[var(--muted)] text-sm">
+            <p className="text-gray-500 dark:text-gray-400 text-sm">
               Computer Science - 3rd Year
             </p>
 
-            <div className="text-sm space-y-1">
+            <div className="text-sm space-y-1 text-gray-700 dark:text-gray-300">
               <p><strong>Student ID:</strong> STU1023</p>
               <p><strong>Email:</strong> john@example.com</p>
               <p><strong>Phone:</strong> +91 9876543210</p>
             </div>
           </div>
+
         </div>
       </SectionCard>
 
       {/* Academic Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
         <StatCard
           title="Current GPA"
           value="8.7"
@@ -51,6 +53,7 @@ const Profile = () => {
           value="92%"
           icon={<Calendar size={20} />}
         />
+
       </div>
 
       {/* Additional Info */}
@@ -58,23 +61,23 @@ const Profile = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
 
           <div>
-            <p className="text-[var(--muted)]">Date of Birth</p>
-            <p>15 March 2002</p>
+            <p className="text-gray-500 dark:text-gray-400">Date of Birth</p>
+            <p className="text-gray-800 dark:text-gray-200">15 March 2002</p>
           </div>
 
           <div>
-            <p className="text-[var(--muted)]">Gender</p>
-            <p>Male</p>
+            <p className="text-gray-500 dark:text-gray-400">Gender</p>
+            <p className="text-gray-800 dark:text-gray-200">Male</p>
           </div>
 
           <div>
-            <p className="text-[var(--muted)]">Address</p>
-            <p>Chennai, Tamil Nadu</p>
+            <p className="text-gray-500 dark:text-gray-400">Address</p>
+            <p className="text-gray-800 dark:text-gray-200">Chennai, Tamil Nadu</p>
           </div>
 
           <div>
-            <p className="text-[var(--muted)]">Enrollment Year</p>
-            <p>2022</p>
+            <p className="text-gray-500 dark:text-gray-400">Enrollment Year</p>
+            <p className="text-gray-800 dark:text-gray-200">2022</p>
           </div>
 
         </div>

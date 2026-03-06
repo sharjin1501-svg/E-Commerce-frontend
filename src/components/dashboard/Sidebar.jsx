@@ -1,11 +1,29 @@
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-  const linkStyle =
-    "block px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700";
+  const linkStyle = ({ isActive }) =>
+    `block px-4 py-2 rounded-lg transition
+     ${
+       isActive
+         ? "bg-blue-500 text-white"
+         : "text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+     }`;
 
   return (
-    <div className="w-64 bg-[var(--card)] p-6 hidden md:block">
+    <div
+      className="
+      w-64
+      bg-white
+      text-gray-800
+      p-6
+      border-r border-gray-200
+      hidden md:block
+
+      dark:bg-gray-900
+      dark:text-gray-200
+      dark:border-gray-700
+      "
+    >
       <h2 className="text-xl font-bold mb-6">Student Panel</h2>
 
       <nav className="space-y-2 text-sm">

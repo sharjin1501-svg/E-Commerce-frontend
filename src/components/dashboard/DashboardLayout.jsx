@@ -4,13 +4,24 @@ import Topbar from "./Topbar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex min-h-screen">
+    <div
+      className="
+      flex
+      min-h-screen
+      bg-gray-100
+      text-gray-800
+
+      dark:bg-gray-800
+      dark:text-gray-200
+      "
+    >
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
         <Topbar />
+
         <main className="p-6">
-          <Outlet />   {/* 🔥 THIS FIXES EVERYTHING */}
+          <Outlet />
         </main>
       </div>
     </div>

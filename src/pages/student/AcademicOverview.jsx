@@ -55,7 +55,7 @@ const AcademicOverview = () => {
     <div className="space-y-10">
 
       {/* ===== Subjects ===== */}
-      <div className="bg-[var(--card)] p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold mb-6">
           Current Semester Subjects
         </h2>
@@ -76,7 +76,7 @@ const AcademicOverview = () => {
       </div>
 
       {/* ===== Internal Assessment ===== */}
-      <div className="bg-[var(--card)] p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold mb-6">
           Internal Assessment (IAT)
         </h2>
@@ -125,7 +125,7 @@ const AcademicOverview = () => {
       </div>
 
       {/* ===== Slip Tests ===== */}
-      <div className="bg-[var(--card)] p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold mb-6">
           Slip Tests
         </h2>
@@ -174,12 +174,11 @@ const AcademicOverview = () => {
       </div>
 
       {/* ===== Assignment Submission ===== */}
-      <div className="bg-[var(--card)] p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold mb-6">
           Assignment Submission Status
         </h2>
 
-        {/* Subject Filter */}
         <div className="flex flex-wrap gap-3 mb-6">
           {subjects.map((sub) => (
             <button
@@ -196,7 +195,6 @@ const AcademicOverview = () => {
           ))}
         </div>
 
-        {/* Assignment Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {Object.entries(currentSubject.assignment).map(
             ([key, value], index) => (
