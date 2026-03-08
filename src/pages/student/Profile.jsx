@@ -1,8 +1,23 @@
+import { useEffect } from "react";
+import api from "../../api/axios.js";
 import SectionCard from "../../components/dashboard/SectionCard";
 import StatCard from "../../components/dashboard/StatCard";
 import { GraduationCap, BookOpen, Calendar } from "lucide-react";
 
 const Profile = () => {
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await api.get("/auth/add");
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
   return (
     <div className="space-y-6">
 
